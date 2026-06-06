@@ -9,38 +9,360 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as LenderRouteImport } from './routes/lender'
+import { Route as FarmerRouteImport } from './routes/farmer'
+import { Route as CustodianRouteImport } from './routes/custodian'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as LenderIndexRouteImport } from './routes/lender.index'
+import { Route as FarmerIndexRouteImport } from './routes/farmer.index'
+import { Route as CustodianIndexRouteImport } from './routes/custodian.index'
+import { Route as LenderLoginRouteImport } from './routes/lender.login'
+import { Route as LenderLocksRouteImport } from './routes/lender.locks'
+import { Route as LenderKeysRouteImport } from './routes/lender.keys'
+import { Route as LenderAuditRouteImport } from './routes/lender.audit'
+import { Route as FarmerTransferRouteImport } from './routes/farmer.transfer'
+import { Route as FarmerRecordsRouteImport } from './routes/farmer.records'
+import { Route as FarmerProfileRouteImport } from './routes/farmer.profile'
+import { Route as FarmerNotificationsRouteImport } from './routes/farmer.notifications'
+import { Route as FarmerLoginRouteImport } from './routes/farmer.login'
+import { Route as FarmerCertificatesRouteImport } from './routes/farmer.certificates'
+import { Route as CustodianSyncRouteImport } from './routes/custodian.sync'
+import { Route as CustodianProfileRouteImport } from './routes/custodian.profile'
+import { Route as CustodianNewRouteImport } from './routes/custodian.new'
+import { Route as CustodianLoginRouteImport } from './routes/custodian.login'
+import { Route as CustodianInventoryRouteImport } from './routes/custodian.inventory'
+import { Route as CustodianExitRouteImport } from './routes/custodian.exit'
+import { Route as LenderTokensIdRouteImport } from './routes/lender.tokens.$id'
+import { Route as FarmerRecordsIdRouteImport } from './routes/farmer.records.$id'
+import { Route as FarmerCertificatesIdRouteImport } from './routes/farmer.certificates.$id'
 
+const LenderRoute = LenderRouteImport.update({
+  id: '/lender',
+  path: '/lender',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FarmerRoute = FarmerRouteImport.update({
+  id: '/farmer',
+  path: '/farmer',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CustodianRoute = CustodianRouteImport.update({
+  id: '/custodian',
+  path: '/custodian',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const LenderIndexRoute = LenderIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => LenderRoute,
+} as any)
+const FarmerIndexRoute = FarmerIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => FarmerRoute,
+} as any)
+const CustodianIndexRoute = CustodianIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => CustodianRoute,
+} as any)
+const LenderLoginRoute = LenderLoginRouteImport.update({
+  id: '/login',
+  path: '/login',
+  getParentRoute: () => LenderRoute,
+} as any)
+const LenderLocksRoute = LenderLocksRouteImport.update({
+  id: '/locks',
+  path: '/locks',
+  getParentRoute: () => LenderRoute,
+} as any)
+const LenderKeysRoute = LenderKeysRouteImport.update({
+  id: '/keys',
+  path: '/keys',
+  getParentRoute: () => LenderRoute,
+} as any)
+const LenderAuditRoute = LenderAuditRouteImport.update({
+  id: '/audit',
+  path: '/audit',
+  getParentRoute: () => LenderRoute,
+} as any)
+const FarmerTransferRoute = FarmerTransferRouteImport.update({
+  id: '/transfer',
+  path: '/transfer',
+  getParentRoute: () => FarmerRoute,
+} as any)
+const FarmerRecordsRoute = FarmerRecordsRouteImport.update({
+  id: '/records',
+  path: '/records',
+  getParentRoute: () => FarmerRoute,
+} as any)
+const FarmerProfileRoute = FarmerProfileRouteImport.update({
+  id: '/profile',
+  path: '/profile',
+  getParentRoute: () => FarmerRoute,
+} as any)
+const FarmerNotificationsRoute = FarmerNotificationsRouteImport.update({
+  id: '/notifications',
+  path: '/notifications',
+  getParentRoute: () => FarmerRoute,
+} as any)
+const FarmerLoginRoute = FarmerLoginRouteImport.update({
+  id: '/login',
+  path: '/login',
+  getParentRoute: () => FarmerRoute,
+} as any)
+const FarmerCertificatesRoute = FarmerCertificatesRouteImport.update({
+  id: '/certificates',
+  path: '/certificates',
+  getParentRoute: () => FarmerRoute,
+} as any)
+const CustodianSyncRoute = CustodianSyncRouteImport.update({
+  id: '/sync',
+  path: '/sync',
+  getParentRoute: () => CustodianRoute,
+} as any)
+const CustodianProfileRoute = CustodianProfileRouteImport.update({
+  id: '/profile',
+  path: '/profile',
+  getParentRoute: () => CustodianRoute,
+} as any)
+const CustodianNewRoute = CustodianNewRouteImport.update({
+  id: '/new',
+  path: '/new',
+  getParentRoute: () => CustodianRoute,
+} as any)
+const CustodianLoginRoute = CustodianLoginRouteImport.update({
+  id: '/login',
+  path: '/login',
+  getParentRoute: () => CustodianRoute,
+} as any)
+const CustodianInventoryRoute = CustodianInventoryRouteImport.update({
+  id: '/inventory',
+  path: '/inventory',
+  getParentRoute: () => CustodianRoute,
+} as any)
+const CustodianExitRoute = CustodianExitRouteImport.update({
+  id: '/exit',
+  path: '/exit',
+  getParentRoute: () => CustodianRoute,
+} as any)
+const LenderTokensIdRoute = LenderTokensIdRouteImport.update({
+  id: '/tokens/$id',
+  path: '/tokens/$id',
+  getParentRoute: () => LenderRoute,
+} as any)
+const FarmerRecordsIdRoute = FarmerRecordsIdRouteImport.update({
+  id: '/$id',
+  path: '/$id',
+  getParentRoute: () => FarmerRecordsRoute,
+} as any)
+const FarmerCertificatesIdRoute = FarmerCertificatesIdRouteImport.update({
+  id: '/$id',
+  path: '/$id',
+  getParentRoute: () => FarmerCertificatesRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/custodian': typeof CustodianRouteWithChildren
+  '/farmer': typeof FarmerRouteWithChildren
+  '/lender': typeof LenderRouteWithChildren
+  '/custodian/exit': typeof CustodianExitRoute
+  '/custodian/inventory': typeof CustodianInventoryRoute
+  '/custodian/login': typeof CustodianLoginRoute
+  '/custodian/new': typeof CustodianNewRoute
+  '/custodian/profile': typeof CustodianProfileRoute
+  '/custodian/sync': typeof CustodianSyncRoute
+  '/farmer/certificates': typeof FarmerCertificatesRouteWithChildren
+  '/farmer/login': typeof FarmerLoginRoute
+  '/farmer/notifications': typeof FarmerNotificationsRoute
+  '/farmer/profile': typeof FarmerProfileRoute
+  '/farmer/records': typeof FarmerRecordsRouteWithChildren
+  '/farmer/transfer': typeof FarmerTransferRoute
+  '/lender/audit': typeof LenderAuditRoute
+  '/lender/keys': typeof LenderKeysRoute
+  '/lender/locks': typeof LenderLocksRoute
+  '/lender/login': typeof LenderLoginRoute
+  '/custodian/': typeof CustodianIndexRoute
+  '/farmer/': typeof FarmerIndexRoute
+  '/lender/': typeof LenderIndexRoute
+  '/farmer/certificates/$id': typeof FarmerCertificatesIdRoute
+  '/farmer/records/$id': typeof FarmerRecordsIdRoute
+  '/lender/tokens/$id': typeof LenderTokensIdRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/custodian/exit': typeof CustodianExitRoute
+  '/custodian/inventory': typeof CustodianInventoryRoute
+  '/custodian/login': typeof CustodianLoginRoute
+  '/custodian/new': typeof CustodianNewRoute
+  '/custodian/profile': typeof CustodianProfileRoute
+  '/custodian/sync': typeof CustodianSyncRoute
+  '/farmer/certificates': typeof FarmerCertificatesRouteWithChildren
+  '/farmer/login': typeof FarmerLoginRoute
+  '/farmer/notifications': typeof FarmerNotificationsRoute
+  '/farmer/profile': typeof FarmerProfileRoute
+  '/farmer/records': typeof FarmerRecordsRouteWithChildren
+  '/farmer/transfer': typeof FarmerTransferRoute
+  '/lender/audit': typeof LenderAuditRoute
+  '/lender/keys': typeof LenderKeysRoute
+  '/lender/locks': typeof LenderLocksRoute
+  '/lender/login': typeof LenderLoginRoute
+  '/custodian': typeof CustodianIndexRoute
+  '/farmer': typeof FarmerIndexRoute
+  '/lender': typeof LenderIndexRoute
+  '/farmer/certificates/$id': typeof FarmerCertificatesIdRoute
+  '/farmer/records/$id': typeof FarmerRecordsIdRoute
+  '/lender/tokens/$id': typeof LenderTokensIdRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/custodian': typeof CustodianRouteWithChildren
+  '/farmer': typeof FarmerRouteWithChildren
+  '/lender': typeof LenderRouteWithChildren
+  '/custodian/exit': typeof CustodianExitRoute
+  '/custodian/inventory': typeof CustodianInventoryRoute
+  '/custodian/login': typeof CustodianLoginRoute
+  '/custodian/new': typeof CustodianNewRoute
+  '/custodian/profile': typeof CustodianProfileRoute
+  '/custodian/sync': typeof CustodianSyncRoute
+  '/farmer/certificates': typeof FarmerCertificatesRouteWithChildren
+  '/farmer/login': typeof FarmerLoginRoute
+  '/farmer/notifications': typeof FarmerNotificationsRoute
+  '/farmer/profile': typeof FarmerProfileRoute
+  '/farmer/records': typeof FarmerRecordsRouteWithChildren
+  '/farmer/transfer': typeof FarmerTransferRoute
+  '/lender/audit': typeof LenderAuditRoute
+  '/lender/keys': typeof LenderKeysRoute
+  '/lender/locks': typeof LenderLocksRoute
+  '/lender/login': typeof LenderLoginRoute
+  '/custodian/': typeof CustodianIndexRoute
+  '/farmer/': typeof FarmerIndexRoute
+  '/lender/': typeof LenderIndexRoute
+  '/farmer/certificates/$id': typeof FarmerCertificatesIdRoute
+  '/farmer/records/$id': typeof FarmerRecordsIdRoute
+  '/lender/tokens/$id': typeof LenderTokensIdRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/custodian'
+    | '/farmer'
+    | '/lender'
+    | '/custodian/exit'
+    | '/custodian/inventory'
+    | '/custodian/login'
+    | '/custodian/new'
+    | '/custodian/profile'
+    | '/custodian/sync'
+    | '/farmer/certificates'
+    | '/farmer/login'
+    | '/farmer/notifications'
+    | '/farmer/profile'
+    | '/farmer/records'
+    | '/farmer/transfer'
+    | '/lender/audit'
+    | '/lender/keys'
+    | '/lender/locks'
+    | '/lender/login'
+    | '/custodian/'
+    | '/farmer/'
+    | '/lender/'
+    | '/farmer/certificates/$id'
+    | '/farmer/records/$id'
+    | '/lender/tokens/$id'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/custodian/exit'
+    | '/custodian/inventory'
+    | '/custodian/login'
+    | '/custodian/new'
+    | '/custodian/profile'
+    | '/custodian/sync'
+    | '/farmer/certificates'
+    | '/farmer/login'
+    | '/farmer/notifications'
+    | '/farmer/profile'
+    | '/farmer/records'
+    | '/farmer/transfer'
+    | '/lender/audit'
+    | '/lender/keys'
+    | '/lender/locks'
+    | '/lender/login'
+    | '/custodian'
+    | '/farmer'
+    | '/lender'
+    | '/farmer/certificates/$id'
+    | '/farmer/records/$id'
+    | '/lender/tokens/$id'
+  id:
+    | '__root__'
+    | '/'
+    | '/custodian'
+    | '/farmer'
+    | '/lender'
+    | '/custodian/exit'
+    | '/custodian/inventory'
+    | '/custodian/login'
+    | '/custodian/new'
+    | '/custodian/profile'
+    | '/custodian/sync'
+    | '/farmer/certificates'
+    | '/farmer/login'
+    | '/farmer/notifications'
+    | '/farmer/profile'
+    | '/farmer/records'
+    | '/farmer/transfer'
+    | '/lender/audit'
+    | '/lender/keys'
+    | '/lender/locks'
+    | '/lender/login'
+    | '/custodian/'
+    | '/farmer/'
+    | '/lender/'
+    | '/farmer/certificates/$id'
+    | '/farmer/records/$id'
+    | '/lender/tokens/$id'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  CustodianRoute: typeof CustodianRouteWithChildren
+  FarmerRoute: typeof FarmerRouteWithChildren
+  LenderRoute: typeof LenderRouteWithChildren
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/lender': {
+      id: '/lender'
+      path: '/lender'
+      fullPath: '/lender'
+      preLoaderRoute: typeof LenderRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/farmer': {
+      id: '/farmer'
+      path: '/farmer'
+      fullPath: '/farmer'
+      preLoaderRoute: typeof FarmerRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/custodian': {
+      id: '/custodian'
+      path: '/custodian'
+      fullPath: '/custodian'
+      preLoaderRoute: typeof CustodianRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -48,22 +370,260 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/lender/': {
+      id: '/lender/'
+      path: '/'
+      fullPath: '/lender/'
+      preLoaderRoute: typeof LenderIndexRouteImport
+      parentRoute: typeof LenderRoute
+    }
+    '/farmer/': {
+      id: '/farmer/'
+      path: '/'
+      fullPath: '/farmer/'
+      preLoaderRoute: typeof FarmerIndexRouteImport
+      parentRoute: typeof FarmerRoute
+    }
+    '/custodian/': {
+      id: '/custodian/'
+      path: '/'
+      fullPath: '/custodian/'
+      preLoaderRoute: typeof CustodianIndexRouteImport
+      parentRoute: typeof CustodianRoute
+    }
+    '/lender/login': {
+      id: '/lender/login'
+      path: '/login'
+      fullPath: '/lender/login'
+      preLoaderRoute: typeof LenderLoginRouteImport
+      parentRoute: typeof LenderRoute
+    }
+    '/lender/locks': {
+      id: '/lender/locks'
+      path: '/locks'
+      fullPath: '/lender/locks'
+      preLoaderRoute: typeof LenderLocksRouteImport
+      parentRoute: typeof LenderRoute
+    }
+    '/lender/keys': {
+      id: '/lender/keys'
+      path: '/keys'
+      fullPath: '/lender/keys'
+      preLoaderRoute: typeof LenderKeysRouteImport
+      parentRoute: typeof LenderRoute
+    }
+    '/lender/audit': {
+      id: '/lender/audit'
+      path: '/audit'
+      fullPath: '/lender/audit'
+      preLoaderRoute: typeof LenderAuditRouteImport
+      parentRoute: typeof LenderRoute
+    }
+    '/farmer/transfer': {
+      id: '/farmer/transfer'
+      path: '/transfer'
+      fullPath: '/farmer/transfer'
+      preLoaderRoute: typeof FarmerTransferRouteImport
+      parentRoute: typeof FarmerRoute
+    }
+    '/farmer/records': {
+      id: '/farmer/records'
+      path: '/records'
+      fullPath: '/farmer/records'
+      preLoaderRoute: typeof FarmerRecordsRouteImport
+      parentRoute: typeof FarmerRoute
+    }
+    '/farmer/profile': {
+      id: '/farmer/profile'
+      path: '/profile'
+      fullPath: '/farmer/profile'
+      preLoaderRoute: typeof FarmerProfileRouteImport
+      parentRoute: typeof FarmerRoute
+    }
+    '/farmer/notifications': {
+      id: '/farmer/notifications'
+      path: '/notifications'
+      fullPath: '/farmer/notifications'
+      preLoaderRoute: typeof FarmerNotificationsRouteImport
+      parentRoute: typeof FarmerRoute
+    }
+    '/farmer/login': {
+      id: '/farmer/login'
+      path: '/login'
+      fullPath: '/farmer/login'
+      preLoaderRoute: typeof FarmerLoginRouteImport
+      parentRoute: typeof FarmerRoute
+    }
+    '/farmer/certificates': {
+      id: '/farmer/certificates'
+      path: '/certificates'
+      fullPath: '/farmer/certificates'
+      preLoaderRoute: typeof FarmerCertificatesRouteImport
+      parentRoute: typeof FarmerRoute
+    }
+    '/custodian/sync': {
+      id: '/custodian/sync'
+      path: '/sync'
+      fullPath: '/custodian/sync'
+      preLoaderRoute: typeof CustodianSyncRouteImport
+      parentRoute: typeof CustodianRoute
+    }
+    '/custodian/profile': {
+      id: '/custodian/profile'
+      path: '/profile'
+      fullPath: '/custodian/profile'
+      preLoaderRoute: typeof CustodianProfileRouteImport
+      parentRoute: typeof CustodianRoute
+    }
+    '/custodian/new': {
+      id: '/custodian/new'
+      path: '/new'
+      fullPath: '/custodian/new'
+      preLoaderRoute: typeof CustodianNewRouteImport
+      parentRoute: typeof CustodianRoute
+    }
+    '/custodian/login': {
+      id: '/custodian/login'
+      path: '/login'
+      fullPath: '/custodian/login'
+      preLoaderRoute: typeof CustodianLoginRouteImport
+      parentRoute: typeof CustodianRoute
+    }
+    '/custodian/inventory': {
+      id: '/custodian/inventory'
+      path: '/inventory'
+      fullPath: '/custodian/inventory'
+      preLoaderRoute: typeof CustodianInventoryRouteImport
+      parentRoute: typeof CustodianRoute
+    }
+    '/custodian/exit': {
+      id: '/custodian/exit'
+      path: '/exit'
+      fullPath: '/custodian/exit'
+      preLoaderRoute: typeof CustodianExitRouteImport
+      parentRoute: typeof CustodianRoute
+    }
+    '/lender/tokens/$id': {
+      id: '/lender/tokens/$id'
+      path: '/tokens/$id'
+      fullPath: '/lender/tokens/$id'
+      preLoaderRoute: typeof LenderTokensIdRouteImport
+      parentRoute: typeof LenderRoute
+    }
+    '/farmer/records/$id': {
+      id: '/farmer/records/$id'
+      path: '/$id'
+      fullPath: '/farmer/records/$id'
+      preLoaderRoute: typeof FarmerRecordsIdRouteImport
+      parentRoute: typeof FarmerRecordsRoute
+    }
+    '/farmer/certificates/$id': {
+      id: '/farmer/certificates/$id'
+      path: '/$id'
+      fullPath: '/farmer/certificates/$id'
+      preLoaderRoute: typeof FarmerCertificatesIdRouteImport
+      parentRoute: typeof FarmerCertificatesRoute
+    }
   }
 }
 
+interface CustodianRouteChildren {
+  CustodianExitRoute: typeof CustodianExitRoute
+  CustodianInventoryRoute: typeof CustodianInventoryRoute
+  CustodianLoginRoute: typeof CustodianLoginRoute
+  CustodianNewRoute: typeof CustodianNewRoute
+  CustodianProfileRoute: typeof CustodianProfileRoute
+  CustodianSyncRoute: typeof CustodianSyncRoute
+  CustodianIndexRoute: typeof CustodianIndexRoute
+}
+
+const CustodianRouteChildren: CustodianRouteChildren = {
+  CustodianExitRoute: CustodianExitRoute,
+  CustodianInventoryRoute: CustodianInventoryRoute,
+  CustodianLoginRoute: CustodianLoginRoute,
+  CustodianNewRoute: CustodianNewRoute,
+  CustodianProfileRoute: CustodianProfileRoute,
+  CustodianSyncRoute: CustodianSyncRoute,
+  CustodianIndexRoute: CustodianIndexRoute,
+}
+
+const CustodianRouteWithChildren = CustodianRoute._addFileChildren(
+  CustodianRouteChildren,
+)
+
+interface FarmerCertificatesRouteChildren {
+  FarmerCertificatesIdRoute: typeof FarmerCertificatesIdRoute
+}
+
+const FarmerCertificatesRouteChildren: FarmerCertificatesRouteChildren = {
+  FarmerCertificatesIdRoute: FarmerCertificatesIdRoute,
+}
+
+const FarmerCertificatesRouteWithChildren =
+  FarmerCertificatesRoute._addFileChildren(FarmerCertificatesRouteChildren)
+
+interface FarmerRecordsRouteChildren {
+  FarmerRecordsIdRoute: typeof FarmerRecordsIdRoute
+}
+
+const FarmerRecordsRouteChildren: FarmerRecordsRouteChildren = {
+  FarmerRecordsIdRoute: FarmerRecordsIdRoute,
+}
+
+const FarmerRecordsRouteWithChildren = FarmerRecordsRoute._addFileChildren(
+  FarmerRecordsRouteChildren,
+)
+
+interface FarmerRouteChildren {
+  FarmerCertificatesRoute: typeof FarmerCertificatesRouteWithChildren
+  FarmerLoginRoute: typeof FarmerLoginRoute
+  FarmerNotificationsRoute: typeof FarmerNotificationsRoute
+  FarmerProfileRoute: typeof FarmerProfileRoute
+  FarmerRecordsRoute: typeof FarmerRecordsRouteWithChildren
+  FarmerTransferRoute: typeof FarmerTransferRoute
+  FarmerIndexRoute: typeof FarmerIndexRoute
+}
+
+const FarmerRouteChildren: FarmerRouteChildren = {
+  FarmerCertificatesRoute: FarmerCertificatesRouteWithChildren,
+  FarmerLoginRoute: FarmerLoginRoute,
+  FarmerNotificationsRoute: FarmerNotificationsRoute,
+  FarmerProfileRoute: FarmerProfileRoute,
+  FarmerRecordsRoute: FarmerRecordsRouteWithChildren,
+  FarmerTransferRoute: FarmerTransferRoute,
+  FarmerIndexRoute: FarmerIndexRoute,
+}
+
+const FarmerRouteWithChildren =
+  FarmerRoute._addFileChildren(FarmerRouteChildren)
+
+interface LenderRouteChildren {
+  LenderAuditRoute: typeof LenderAuditRoute
+  LenderKeysRoute: typeof LenderKeysRoute
+  LenderLocksRoute: typeof LenderLocksRoute
+  LenderLoginRoute: typeof LenderLoginRoute
+  LenderIndexRoute: typeof LenderIndexRoute
+  LenderTokensIdRoute: typeof LenderTokensIdRoute
+}
+
+const LenderRouteChildren: LenderRouteChildren = {
+  LenderAuditRoute: LenderAuditRoute,
+  LenderKeysRoute: LenderKeysRoute,
+  LenderLocksRoute: LenderLocksRoute,
+  LenderLoginRoute: LenderLoginRoute,
+  LenderIndexRoute: LenderIndexRoute,
+  LenderTokensIdRoute: LenderTokensIdRoute,
+}
+
+const LenderRouteWithChildren =
+  LenderRoute._addFileChildren(LenderRouteChildren)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  CustodianRoute: CustodianRouteWithChildren,
+  FarmerRoute: FarmerRouteWithChildren,
+  LenderRoute: LenderRouteWithChildren,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { startInstance } from './start.ts'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-    config: Awaited<ReturnType<typeof startInstance.getOptions>>
-  }
-}
