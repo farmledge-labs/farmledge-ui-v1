@@ -9,11 +9,17 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as LenderRouteImport } from './routes/lender'
 import { Route as FarmerRouteImport } from './routes/farmer'
 import { Route as CustodianRouteImport } from './routes/custodian'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as LenderIndexRouteImport } from './routes/lender.index'
 import { Route as FarmerIndexRouteImport } from './routes/farmer.index'
 import { Route as CustodianIndexRouteImport } from './routes/custodian.index'
+import { Route as LenderLoginRouteImport } from './routes/lender.login'
+import { Route as LenderLocksRouteImport } from './routes/lender.locks'
+import { Route as LenderKeysRouteImport } from './routes/lender.keys'
+import { Route as LenderAuditRouteImport } from './routes/lender.audit'
 import { Route as FarmerTransferRouteImport } from './routes/farmer.transfer'
 import { Route as FarmerRecordsRouteImport } from './routes/farmer.records'
 import { Route as FarmerProfileRouteImport } from './routes/farmer.profile'
@@ -26,9 +32,15 @@ import { Route as CustodianNewRouteImport } from './routes/custodian.new'
 import { Route as CustodianLoginRouteImport } from './routes/custodian.login'
 import { Route as CustodianInventoryRouteImport } from './routes/custodian.inventory'
 import { Route as CustodianExitRouteImport } from './routes/custodian.exit'
+import { Route as LenderTokensIdRouteImport } from './routes/lender.tokens.$id'
 import { Route as FarmerRecordsIdRouteImport } from './routes/farmer.records.$id'
 import { Route as FarmerCertificatesIdRouteImport } from './routes/farmer.certificates.$id'
 
+const LenderRoute = LenderRouteImport.update({
+  id: '/lender',
+  path: '/lender',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const FarmerRoute = FarmerRouteImport.update({
   id: '/farmer',
   path: '/farmer',
@@ -44,6 +56,11 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const LenderIndexRoute = LenderIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => LenderRoute,
+} as any)
 const FarmerIndexRoute = FarmerIndexRouteImport.update({
   id: '/',
   path: '/',
@@ -53,6 +70,26 @@ const CustodianIndexRoute = CustodianIndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => CustodianRoute,
+} as any)
+const LenderLoginRoute = LenderLoginRouteImport.update({
+  id: '/login',
+  path: '/login',
+  getParentRoute: () => LenderRoute,
+} as any)
+const LenderLocksRoute = LenderLocksRouteImport.update({
+  id: '/locks',
+  path: '/locks',
+  getParentRoute: () => LenderRoute,
+} as any)
+const LenderKeysRoute = LenderKeysRouteImport.update({
+  id: '/keys',
+  path: '/keys',
+  getParentRoute: () => LenderRoute,
+} as any)
+const LenderAuditRoute = LenderAuditRouteImport.update({
+  id: '/audit',
+  path: '/audit',
+  getParentRoute: () => LenderRoute,
 } as any)
 const FarmerTransferRoute = FarmerTransferRouteImport.update({
   id: '/transfer',
@@ -114,6 +151,11 @@ const CustodianExitRoute = CustodianExitRouteImport.update({
   path: '/exit',
   getParentRoute: () => CustodianRoute,
 } as any)
+const LenderTokensIdRoute = LenderTokensIdRouteImport.update({
+  id: '/tokens/$id',
+  path: '/tokens/$id',
+  getParentRoute: () => LenderRoute,
+} as any)
 const FarmerRecordsIdRoute = FarmerRecordsIdRouteImport.update({
   id: '/$id',
   path: '/$id',
@@ -129,6 +171,7 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/custodian': typeof CustodianRouteWithChildren
   '/farmer': typeof FarmerRouteWithChildren
+  '/lender': typeof LenderRouteWithChildren
   '/custodian/exit': typeof CustodianExitRoute
   '/custodian/inventory': typeof CustodianInventoryRoute
   '/custodian/login': typeof CustodianLoginRoute
@@ -141,10 +184,16 @@ export interface FileRoutesByFullPath {
   '/farmer/profile': typeof FarmerProfileRoute
   '/farmer/records': typeof FarmerRecordsRouteWithChildren
   '/farmer/transfer': typeof FarmerTransferRoute
+  '/lender/audit': typeof LenderAuditRoute
+  '/lender/keys': typeof LenderKeysRoute
+  '/lender/locks': typeof LenderLocksRoute
+  '/lender/login': typeof LenderLoginRoute
   '/custodian/': typeof CustodianIndexRoute
   '/farmer/': typeof FarmerIndexRoute
+  '/lender/': typeof LenderIndexRoute
   '/farmer/certificates/$id': typeof FarmerCertificatesIdRoute
   '/farmer/records/$id': typeof FarmerRecordsIdRoute
+  '/lender/tokens/$id': typeof LenderTokensIdRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -160,16 +209,23 @@ export interface FileRoutesByTo {
   '/farmer/profile': typeof FarmerProfileRoute
   '/farmer/records': typeof FarmerRecordsRouteWithChildren
   '/farmer/transfer': typeof FarmerTransferRoute
+  '/lender/audit': typeof LenderAuditRoute
+  '/lender/keys': typeof LenderKeysRoute
+  '/lender/locks': typeof LenderLocksRoute
+  '/lender/login': typeof LenderLoginRoute
   '/custodian': typeof CustodianIndexRoute
   '/farmer': typeof FarmerIndexRoute
+  '/lender': typeof LenderIndexRoute
   '/farmer/certificates/$id': typeof FarmerCertificatesIdRoute
   '/farmer/records/$id': typeof FarmerRecordsIdRoute
+  '/lender/tokens/$id': typeof LenderTokensIdRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/custodian': typeof CustodianRouteWithChildren
   '/farmer': typeof FarmerRouteWithChildren
+  '/lender': typeof LenderRouteWithChildren
   '/custodian/exit': typeof CustodianExitRoute
   '/custodian/inventory': typeof CustodianInventoryRoute
   '/custodian/login': typeof CustodianLoginRoute
@@ -182,10 +238,16 @@ export interface FileRoutesById {
   '/farmer/profile': typeof FarmerProfileRoute
   '/farmer/records': typeof FarmerRecordsRouteWithChildren
   '/farmer/transfer': typeof FarmerTransferRoute
+  '/lender/audit': typeof LenderAuditRoute
+  '/lender/keys': typeof LenderKeysRoute
+  '/lender/locks': typeof LenderLocksRoute
+  '/lender/login': typeof LenderLoginRoute
   '/custodian/': typeof CustodianIndexRoute
   '/farmer/': typeof FarmerIndexRoute
+  '/lender/': typeof LenderIndexRoute
   '/farmer/certificates/$id': typeof FarmerCertificatesIdRoute
   '/farmer/records/$id': typeof FarmerRecordsIdRoute
+  '/lender/tokens/$id': typeof LenderTokensIdRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -193,6 +255,7 @@ export interface FileRouteTypes {
     | '/'
     | '/custodian'
     | '/farmer'
+    | '/lender'
     | '/custodian/exit'
     | '/custodian/inventory'
     | '/custodian/login'
@@ -205,10 +268,16 @@ export interface FileRouteTypes {
     | '/farmer/profile'
     | '/farmer/records'
     | '/farmer/transfer'
+    | '/lender/audit'
+    | '/lender/keys'
+    | '/lender/locks'
+    | '/lender/login'
     | '/custodian/'
     | '/farmer/'
+    | '/lender/'
     | '/farmer/certificates/$id'
     | '/farmer/records/$id'
+    | '/lender/tokens/$id'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -224,15 +293,22 @@ export interface FileRouteTypes {
     | '/farmer/profile'
     | '/farmer/records'
     | '/farmer/transfer'
+    | '/lender/audit'
+    | '/lender/keys'
+    | '/lender/locks'
+    | '/lender/login'
     | '/custodian'
     | '/farmer'
+    | '/lender'
     | '/farmer/certificates/$id'
     | '/farmer/records/$id'
+    | '/lender/tokens/$id'
   id:
     | '__root__'
     | '/'
     | '/custodian'
     | '/farmer'
+    | '/lender'
     | '/custodian/exit'
     | '/custodian/inventory'
     | '/custodian/login'
@@ -245,20 +321,34 @@ export interface FileRouteTypes {
     | '/farmer/profile'
     | '/farmer/records'
     | '/farmer/transfer'
+    | '/lender/audit'
+    | '/lender/keys'
+    | '/lender/locks'
+    | '/lender/login'
     | '/custodian/'
     | '/farmer/'
+    | '/lender/'
     | '/farmer/certificates/$id'
     | '/farmer/records/$id'
+    | '/lender/tokens/$id'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   CustodianRoute: typeof CustodianRouteWithChildren
   FarmerRoute: typeof FarmerRouteWithChildren
+  LenderRoute: typeof LenderRouteWithChildren
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/lender': {
+      id: '/lender'
+      path: '/lender'
+      fullPath: '/lender'
+      preLoaderRoute: typeof LenderRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/farmer': {
       id: '/farmer'
       path: '/farmer'
@@ -280,6 +370,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/lender/': {
+      id: '/lender/'
+      path: '/'
+      fullPath: '/lender/'
+      preLoaderRoute: typeof LenderIndexRouteImport
+      parentRoute: typeof LenderRoute
+    }
     '/farmer/': {
       id: '/farmer/'
       path: '/'
@@ -293,6 +390,34 @@ declare module '@tanstack/react-router' {
       fullPath: '/custodian/'
       preLoaderRoute: typeof CustodianIndexRouteImport
       parentRoute: typeof CustodianRoute
+    }
+    '/lender/login': {
+      id: '/lender/login'
+      path: '/login'
+      fullPath: '/lender/login'
+      preLoaderRoute: typeof LenderLoginRouteImport
+      parentRoute: typeof LenderRoute
+    }
+    '/lender/locks': {
+      id: '/lender/locks'
+      path: '/locks'
+      fullPath: '/lender/locks'
+      preLoaderRoute: typeof LenderLocksRouteImport
+      parentRoute: typeof LenderRoute
+    }
+    '/lender/keys': {
+      id: '/lender/keys'
+      path: '/keys'
+      fullPath: '/lender/keys'
+      preLoaderRoute: typeof LenderKeysRouteImport
+      parentRoute: typeof LenderRoute
+    }
+    '/lender/audit': {
+      id: '/lender/audit'
+      path: '/audit'
+      fullPath: '/lender/audit'
+      preLoaderRoute: typeof LenderAuditRouteImport
+      parentRoute: typeof LenderRoute
     }
     '/farmer/transfer': {
       id: '/farmer/transfer'
@@ -377,6 +502,13 @@ declare module '@tanstack/react-router' {
       fullPath: '/custodian/exit'
       preLoaderRoute: typeof CustodianExitRouteImport
       parentRoute: typeof CustodianRoute
+    }
+    '/lender/tokens/$id': {
+      id: '/lender/tokens/$id'
+      path: '/tokens/$id'
+      fullPath: '/lender/tokens/$id'
+      preLoaderRoute: typeof LenderTokensIdRouteImport
+      parentRoute: typeof LenderRoute
     }
     '/farmer/records/$id': {
       id: '/farmer/records/$id'
@@ -465,10 +597,32 @@ const FarmerRouteChildren: FarmerRouteChildren = {
 const FarmerRouteWithChildren =
   FarmerRoute._addFileChildren(FarmerRouteChildren)
 
+interface LenderRouteChildren {
+  LenderAuditRoute: typeof LenderAuditRoute
+  LenderKeysRoute: typeof LenderKeysRoute
+  LenderLocksRoute: typeof LenderLocksRoute
+  LenderLoginRoute: typeof LenderLoginRoute
+  LenderIndexRoute: typeof LenderIndexRoute
+  LenderTokensIdRoute: typeof LenderTokensIdRoute
+}
+
+const LenderRouteChildren: LenderRouteChildren = {
+  LenderAuditRoute: LenderAuditRoute,
+  LenderKeysRoute: LenderKeysRoute,
+  LenderLocksRoute: LenderLocksRoute,
+  LenderLoginRoute: LenderLoginRoute,
+  LenderIndexRoute: LenderIndexRoute,
+  LenderTokensIdRoute: LenderTokensIdRoute,
+}
+
+const LenderRouteWithChildren =
+  LenderRoute._addFileChildren(LenderRouteChildren)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   CustodianRoute: CustodianRouteWithChildren,
   FarmerRoute: FarmerRouteWithChildren,
+  LenderRoute: LenderRouteWithChildren,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
