@@ -19,7 +19,7 @@ export function FarmerTabBar() {
           return (
             <li key={t.to}>
               <Link
-                to={t.to}
+                to={t.to as string}
                 className={`flex flex-col items-center gap-1 rounded-lg px-2 py-1.5 text-[11px] font-medium transition ${
                   active ? "text-earth-deep" : "text-earth-mid"
                 }`}
