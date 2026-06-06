@@ -11,6 +11,15 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as FarmerRouteImport } from './routes/farmer'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as FarmerIndexRouteImport } from './routes/farmer.index'
+import { Route as FarmerTransferRouteImport } from './routes/farmer.transfer'
+import { Route as FarmerRecordsRouteImport } from './routes/farmer.records'
+import { Route as FarmerProfileRouteImport } from './routes/farmer.profile'
+import { Route as FarmerNotificationsRouteImport } from './routes/farmer.notifications'
+import { Route as FarmerLoginRouteImport } from './routes/farmer.login'
+import { Route as FarmerCertificatesRouteImport } from './routes/farmer.certificates'
+import { Route as FarmerRecordsIdRouteImport } from './routes/farmer.records.$id'
+import { Route as FarmerCertificatesIdRouteImport } from './routes/farmer.certificates.$id'
 
 const FarmerRoute = FarmerRouteImport.update({
   id: '/farmer',
@@ -22,31 +31,135 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const FarmerIndexRoute = FarmerIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => FarmerRoute,
+} as any)
+const FarmerTransferRoute = FarmerTransferRouteImport.update({
+  id: '/transfer',
+  path: '/transfer',
+  getParentRoute: () => FarmerRoute,
+} as any)
+const FarmerRecordsRoute = FarmerRecordsRouteImport.update({
+  id: '/records',
+  path: '/records',
+  getParentRoute: () => FarmerRoute,
+} as any)
+const FarmerProfileRoute = FarmerProfileRouteImport.update({
+  id: '/profile',
+  path: '/profile',
+  getParentRoute: () => FarmerRoute,
+} as any)
+const FarmerNotificationsRoute = FarmerNotificationsRouteImport.update({
+  id: '/notifications',
+  path: '/notifications',
+  getParentRoute: () => FarmerRoute,
+} as any)
+const FarmerLoginRoute = FarmerLoginRouteImport.update({
+  id: '/login',
+  path: '/login',
+  getParentRoute: () => FarmerRoute,
+} as any)
+const FarmerCertificatesRoute = FarmerCertificatesRouteImport.update({
+  id: '/certificates',
+  path: '/certificates',
+  getParentRoute: () => FarmerRoute,
+} as any)
+const FarmerRecordsIdRoute = FarmerRecordsIdRouteImport.update({
+  id: '/$id',
+  path: '/$id',
+  getParentRoute: () => FarmerRecordsRoute,
+} as any)
+const FarmerCertificatesIdRoute = FarmerCertificatesIdRouteImport.update({
+  id: '/$id',
+  path: '/$id',
+  getParentRoute: () => FarmerCertificatesRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
-  '/farmer': typeof FarmerRoute
+  '/farmer': typeof FarmerRouteWithChildren
+  '/farmer/certificates': typeof FarmerCertificatesRouteWithChildren
+  '/farmer/login': typeof FarmerLoginRoute
+  '/farmer/notifications': typeof FarmerNotificationsRoute
+  '/farmer/profile': typeof FarmerProfileRoute
+  '/farmer/records': typeof FarmerRecordsRouteWithChildren
+  '/farmer/transfer': typeof FarmerTransferRoute
+  '/farmer/': typeof FarmerIndexRoute
+  '/farmer/certificates/$id': typeof FarmerCertificatesIdRoute
+  '/farmer/records/$id': typeof FarmerRecordsIdRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '/farmer': typeof FarmerRoute
+  '/farmer/certificates': typeof FarmerCertificatesRouteWithChildren
+  '/farmer/login': typeof FarmerLoginRoute
+  '/farmer/notifications': typeof FarmerNotificationsRoute
+  '/farmer/profile': typeof FarmerProfileRoute
+  '/farmer/records': typeof FarmerRecordsRouteWithChildren
+  '/farmer/transfer': typeof FarmerTransferRoute
+  '/farmer': typeof FarmerIndexRoute
+  '/farmer/certificates/$id': typeof FarmerCertificatesIdRoute
+  '/farmer/records/$id': typeof FarmerRecordsIdRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
-  '/farmer': typeof FarmerRoute
+  '/farmer': typeof FarmerRouteWithChildren
+  '/farmer/certificates': typeof FarmerCertificatesRouteWithChildren
+  '/farmer/login': typeof FarmerLoginRoute
+  '/farmer/notifications': typeof FarmerNotificationsRoute
+  '/farmer/profile': typeof FarmerProfileRoute
+  '/farmer/records': typeof FarmerRecordsRouteWithChildren
+  '/farmer/transfer': typeof FarmerTransferRoute
+  '/farmer/': typeof FarmerIndexRoute
+  '/farmer/certificates/$id': typeof FarmerCertificatesIdRoute
+  '/farmer/records/$id': typeof FarmerRecordsIdRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/farmer'
+  fullPaths:
+    | '/'
+    | '/farmer'
+    | '/farmer/certificates'
+    | '/farmer/login'
+    | '/farmer/notifications'
+    | '/farmer/profile'
+    | '/farmer/records'
+    | '/farmer/transfer'
+    | '/farmer/'
+    | '/farmer/certificates/$id'
+    | '/farmer/records/$id'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/farmer'
-  id: '__root__' | '/' | '/farmer'
+  to:
+    | '/'
+    | '/farmer/certificates'
+    | '/farmer/login'
+    | '/farmer/notifications'
+    | '/farmer/profile'
+    | '/farmer/records'
+    | '/farmer/transfer'
+    | '/farmer'
+    | '/farmer/certificates/$id'
+    | '/farmer/records/$id'
+  id:
+    | '__root__'
+    | '/'
+    | '/farmer'
+    | '/farmer/certificates'
+    | '/farmer/login'
+    | '/farmer/notifications'
+    | '/farmer/profile'
+    | '/farmer/records'
+    | '/farmer/transfer'
+    | '/farmer/'
+    | '/farmer/certificates/$id'
+    | '/farmer/records/$id'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
-  FarmerRoute: typeof FarmerRoute
+  FarmerRoute: typeof FarmerRouteWithChildren
 }
 
 declare module '@tanstack/react-router' {
@@ -65,13 +178,132 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/farmer/': {
+      id: '/farmer/'
+      path: '/'
+      fullPath: '/farmer/'
+      preLoaderRoute: typeof FarmerIndexRouteImport
+      parentRoute: typeof FarmerRoute
+    }
+    '/farmer/transfer': {
+      id: '/farmer/transfer'
+      path: '/transfer'
+      fullPath: '/farmer/transfer'
+      preLoaderRoute: typeof FarmerTransferRouteImport
+      parentRoute: typeof FarmerRoute
+    }
+    '/farmer/records': {
+      id: '/farmer/records'
+      path: '/records'
+      fullPath: '/farmer/records'
+      preLoaderRoute: typeof FarmerRecordsRouteImport
+      parentRoute: typeof FarmerRoute
+    }
+    '/farmer/profile': {
+      id: '/farmer/profile'
+      path: '/profile'
+      fullPath: '/farmer/profile'
+      preLoaderRoute: typeof FarmerProfileRouteImport
+      parentRoute: typeof FarmerRoute
+    }
+    '/farmer/notifications': {
+      id: '/farmer/notifications'
+      path: '/notifications'
+      fullPath: '/farmer/notifications'
+      preLoaderRoute: typeof FarmerNotificationsRouteImport
+      parentRoute: typeof FarmerRoute
+    }
+    '/farmer/login': {
+      id: '/farmer/login'
+      path: '/login'
+      fullPath: '/farmer/login'
+      preLoaderRoute: typeof FarmerLoginRouteImport
+      parentRoute: typeof FarmerRoute
+    }
+    '/farmer/certificates': {
+      id: '/farmer/certificates'
+      path: '/certificates'
+      fullPath: '/farmer/certificates'
+      preLoaderRoute: typeof FarmerCertificatesRouteImport
+      parentRoute: typeof FarmerRoute
+    }
+    '/farmer/records/$id': {
+      id: '/farmer/records/$id'
+      path: '/$id'
+      fullPath: '/farmer/records/$id'
+      preLoaderRoute: typeof FarmerRecordsIdRouteImport
+      parentRoute: typeof FarmerRecordsRoute
+    }
+    '/farmer/certificates/$id': {
+      id: '/farmer/certificates/$id'
+      path: '/$id'
+      fullPath: '/farmer/certificates/$id'
+      preLoaderRoute: typeof FarmerCertificatesIdRouteImport
+      parentRoute: typeof FarmerCertificatesRoute
+    }
   }
 }
 
+interface FarmerCertificatesRouteChildren {
+  FarmerCertificatesIdRoute: typeof FarmerCertificatesIdRoute
+}
+
+const FarmerCertificatesRouteChildren: FarmerCertificatesRouteChildren = {
+  FarmerCertificatesIdRoute: FarmerCertificatesIdRoute,
+}
+
+const FarmerCertificatesRouteWithChildren =
+  FarmerCertificatesRoute._addFileChildren(FarmerCertificatesRouteChildren)
+
+interface FarmerRecordsRouteChildren {
+  FarmerRecordsIdRoute: typeof FarmerRecordsIdRoute
+}
+
+const FarmerRecordsRouteChildren: FarmerRecordsRouteChildren = {
+  FarmerRecordsIdRoute: FarmerRecordsIdRoute,
+}
+
+const FarmerRecordsRouteWithChildren = FarmerRecordsRoute._addFileChildren(
+  FarmerRecordsRouteChildren,
+)
+
+interface FarmerRouteChildren {
+  FarmerCertificatesRoute: typeof FarmerCertificatesRouteWithChildren
+  FarmerLoginRoute: typeof FarmerLoginRoute
+  FarmerNotificationsRoute: typeof FarmerNotificationsRoute
+  FarmerProfileRoute: typeof FarmerProfileRoute
+  FarmerRecordsRoute: typeof FarmerRecordsRouteWithChildren
+  FarmerTransferRoute: typeof FarmerTransferRoute
+  FarmerIndexRoute: typeof FarmerIndexRoute
+}
+
+const FarmerRouteChildren: FarmerRouteChildren = {
+  FarmerCertificatesRoute: FarmerCertificatesRouteWithChildren,
+  FarmerLoginRoute: FarmerLoginRoute,
+  FarmerNotificationsRoute: FarmerNotificationsRoute,
+  FarmerProfileRoute: FarmerProfileRoute,
+  FarmerRecordsRoute: FarmerRecordsRouteWithChildren,
+  FarmerTransferRoute: FarmerTransferRoute,
+  FarmerIndexRoute: FarmerIndexRoute,
+}
+
+const FarmerRouteWithChildren =
+  FarmerRoute._addFileChildren(FarmerRouteChildren)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
-  FarmerRoute: FarmerRoute,
+  FarmerRoute: FarmerRouteWithChildren,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
+
+import type { getRouter } from './router.tsx'
+import type { startInstance } from './start.ts'
+declare module '@tanstack/react-start' {
+  interface Register {
+    ssr: true
+    router: Awaited<ReturnType<typeof getRouter>>
+    config: Awaited<ReturnType<typeof startInstance.getOptions>>
+  }
+}
