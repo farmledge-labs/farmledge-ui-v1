@@ -1,13 +1,13 @@
 import { Link, useRouterState } from "@tanstack/react-router";
 import { House, ListBullets, ArrowsLeftRight, FileText, User } from "@phosphor-icons/react";
 
-const tabs = [
+const tabs: Array<{ to: string; label: string; Icon: typeof House; exact?: boolean }> = [
   { to: "/farmer", label: "Home", Icon: House, exact: true },
   { to: "/farmer/records", label: "Records", Icon: ListBullets },
   { to: "/farmer/transfer", label: "Transfer", Icon: ArrowsLeftRight },
   { to: "/farmer/certificates", label: "Certificates", Icon: FileText },
   { to: "/farmer/profile", label: "Profile", Icon: User },
-] as const;
+];
 
 export function FarmerTabBar() {
   const pathname = useRouterState({ select: (s) => s.location.pathname });
