@@ -16,7 +16,7 @@ export function FarmerScreen({ title, backTo, right, offline, children }: Props)
       {(title || backTo) && (
         <header className="sticky top-0 z-20 flex items-center gap-2 border-b border-border/60 bg-grain-pale/95 px-4 py-3 backdrop-blur">
           {backTo ? (
-            <Link to={backTo} className="-ml-1 flex size-9 items-center justify-center rounded-full hover:bg-grain-warm">
+            <Link to={backTo as never} className="-ml-1 flex size-9 items-center justify-center rounded-full hover:bg-grain-warm">
               <CaretLeft className="size-5 text-earth-deep" />
             </Link>
           ) : (
