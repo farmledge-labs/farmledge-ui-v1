@@ -10,20 +10,33 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as FarmerRouteImport } from './routes/farmer'
+import { Route as CustodianRouteImport } from './routes/custodian'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as FarmerIndexRouteImport } from './routes/farmer.index'
+import { Route as CustodianIndexRouteImport } from './routes/custodian.index'
 import { Route as FarmerTransferRouteImport } from './routes/farmer.transfer'
 import { Route as FarmerRecordsRouteImport } from './routes/farmer.records'
 import { Route as FarmerProfileRouteImport } from './routes/farmer.profile'
 import { Route as FarmerNotificationsRouteImport } from './routes/farmer.notifications'
 import { Route as FarmerLoginRouteImport } from './routes/farmer.login'
 import { Route as FarmerCertificatesRouteImport } from './routes/farmer.certificates'
+import { Route as CustodianSyncRouteImport } from './routes/custodian.sync'
+import { Route as CustodianProfileRouteImport } from './routes/custodian.profile'
+import { Route as CustodianNewRouteImport } from './routes/custodian.new'
+import { Route as CustodianLoginRouteImport } from './routes/custodian.login'
+import { Route as CustodianInventoryRouteImport } from './routes/custodian.inventory'
+import { Route as CustodianExitRouteImport } from './routes/custodian.exit'
 import { Route as FarmerRecordsIdRouteImport } from './routes/farmer.records.$id'
 import { Route as FarmerCertificatesIdRouteImport } from './routes/farmer.certificates.$id'
 
 const FarmerRoute = FarmerRouteImport.update({
   id: '/farmer',
   path: '/farmer',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CustodianRoute = CustodianRouteImport.update({
+  id: '/custodian',
+  path: '/custodian',
   getParentRoute: () => rootRouteImport,
 } as any)
 const IndexRoute = IndexRouteImport.update({
@@ -35,6 +48,11 @@ const FarmerIndexRoute = FarmerIndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => FarmerRoute,
+} as any)
+const CustodianIndexRoute = CustodianIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => CustodianRoute,
 } as any)
 const FarmerTransferRoute = FarmerTransferRouteImport.update({
   id: '/transfer',
@@ -66,6 +84,36 @@ const FarmerCertificatesRoute = FarmerCertificatesRouteImport.update({
   path: '/certificates',
   getParentRoute: () => FarmerRoute,
 } as any)
+const CustodianSyncRoute = CustodianSyncRouteImport.update({
+  id: '/sync',
+  path: '/sync',
+  getParentRoute: () => CustodianRoute,
+} as any)
+const CustodianProfileRoute = CustodianProfileRouteImport.update({
+  id: '/profile',
+  path: '/profile',
+  getParentRoute: () => CustodianRoute,
+} as any)
+const CustodianNewRoute = CustodianNewRouteImport.update({
+  id: '/new',
+  path: '/new',
+  getParentRoute: () => CustodianRoute,
+} as any)
+const CustodianLoginRoute = CustodianLoginRouteImport.update({
+  id: '/login',
+  path: '/login',
+  getParentRoute: () => CustodianRoute,
+} as any)
+const CustodianInventoryRoute = CustodianInventoryRouteImport.update({
+  id: '/inventory',
+  path: '/inventory',
+  getParentRoute: () => CustodianRoute,
+} as any)
+const CustodianExitRoute = CustodianExitRouteImport.update({
+  id: '/exit',
+  path: '/exit',
+  getParentRoute: () => CustodianRoute,
+} as any)
 const FarmerRecordsIdRoute = FarmerRecordsIdRouteImport.update({
   id: '/$id',
   path: '/$id',
@@ -79,25 +127,40 @@ const FarmerCertificatesIdRoute = FarmerCertificatesIdRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/custodian': typeof CustodianRouteWithChildren
   '/farmer': typeof FarmerRouteWithChildren
+  '/custodian/exit': typeof CustodianExitRoute
+  '/custodian/inventory': typeof CustodianInventoryRoute
+  '/custodian/login': typeof CustodianLoginRoute
+  '/custodian/new': typeof CustodianNewRoute
+  '/custodian/profile': typeof CustodianProfileRoute
+  '/custodian/sync': typeof CustodianSyncRoute
   '/farmer/certificates': typeof FarmerCertificatesRouteWithChildren
   '/farmer/login': typeof FarmerLoginRoute
   '/farmer/notifications': typeof FarmerNotificationsRoute
   '/farmer/profile': typeof FarmerProfileRoute
   '/farmer/records': typeof FarmerRecordsRouteWithChildren
   '/farmer/transfer': typeof FarmerTransferRoute
+  '/custodian/': typeof CustodianIndexRoute
   '/farmer/': typeof FarmerIndexRoute
   '/farmer/certificates/$id': typeof FarmerCertificatesIdRoute
   '/farmer/records/$id': typeof FarmerRecordsIdRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/custodian/exit': typeof CustodianExitRoute
+  '/custodian/inventory': typeof CustodianInventoryRoute
+  '/custodian/login': typeof CustodianLoginRoute
+  '/custodian/new': typeof CustodianNewRoute
+  '/custodian/profile': typeof CustodianProfileRoute
+  '/custodian/sync': typeof CustodianSyncRoute
   '/farmer/certificates': typeof FarmerCertificatesRouteWithChildren
   '/farmer/login': typeof FarmerLoginRoute
   '/farmer/notifications': typeof FarmerNotificationsRoute
   '/farmer/profile': typeof FarmerProfileRoute
   '/farmer/records': typeof FarmerRecordsRouteWithChildren
   '/farmer/transfer': typeof FarmerTransferRoute
+  '/custodian': typeof CustodianIndexRoute
   '/farmer': typeof FarmerIndexRoute
   '/farmer/certificates/$id': typeof FarmerCertificatesIdRoute
   '/farmer/records/$id': typeof FarmerRecordsIdRoute
@@ -105,13 +168,21 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/custodian': typeof CustodianRouteWithChildren
   '/farmer': typeof FarmerRouteWithChildren
+  '/custodian/exit': typeof CustodianExitRoute
+  '/custodian/inventory': typeof CustodianInventoryRoute
+  '/custodian/login': typeof CustodianLoginRoute
+  '/custodian/new': typeof CustodianNewRoute
+  '/custodian/profile': typeof CustodianProfileRoute
+  '/custodian/sync': typeof CustodianSyncRoute
   '/farmer/certificates': typeof FarmerCertificatesRouteWithChildren
   '/farmer/login': typeof FarmerLoginRoute
   '/farmer/notifications': typeof FarmerNotificationsRoute
   '/farmer/profile': typeof FarmerProfileRoute
   '/farmer/records': typeof FarmerRecordsRouteWithChildren
   '/farmer/transfer': typeof FarmerTransferRoute
+  '/custodian/': typeof CustodianIndexRoute
   '/farmer/': typeof FarmerIndexRoute
   '/farmer/certificates/$id': typeof FarmerCertificatesIdRoute
   '/farmer/records/$id': typeof FarmerRecordsIdRoute
@@ -120,38 +191,61 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/custodian'
     | '/farmer'
+    | '/custodian/exit'
+    | '/custodian/inventory'
+    | '/custodian/login'
+    | '/custodian/new'
+    | '/custodian/profile'
+    | '/custodian/sync'
     | '/farmer/certificates'
     | '/farmer/login'
     | '/farmer/notifications'
     | '/farmer/profile'
     | '/farmer/records'
     | '/farmer/transfer'
+    | '/custodian/'
     | '/farmer/'
     | '/farmer/certificates/$id'
     | '/farmer/records/$id'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/custodian/exit'
+    | '/custodian/inventory'
+    | '/custodian/login'
+    | '/custodian/new'
+    | '/custodian/profile'
+    | '/custodian/sync'
     | '/farmer/certificates'
     | '/farmer/login'
     | '/farmer/notifications'
     | '/farmer/profile'
     | '/farmer/records'
     | '/farmer/transfer'
+    | '/custodian'
     | '/farmer'
     | '/farmer/certificates/$id'
     | '/farmer/records/$id'
   id:
     | '__root__'
     | '/'
+    | '/custodian'
     | '/farmer'
+    | '/custodian/exit'
+    | '/custodian/inventory'
+    | '/custodian/login'
+    | '/custodian/new'
+    | '/custodian/profile'
+    | '/custodian/sync'
     | '/farmer/certificates'
     | '/farmer/login'
     | '/farmer/notifications'
     | '/farmer/profile'
     | '/farmer/records'
     | '/farmer/transfer'
+    | '/custodian/'
     | '/farmer/'
     | '/farmer/certificates/$id'
     | '/farmer/records/$id'
@@ -159,6 +253,7 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  CustodianRoute: typeof CustodianRouteWithChildren
   FarmerRoute: typeof FarmerRouteWithChildren
 }
 
@@ -169,6 +264,13 @@ declare module '@tanstack/react-router' {
       path: '/farmer'
       fullPath: '/farmer'
       preLoaderRoute: typeof FarmerRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/custodian': {
+      id: '/custodian'
+      path: '/custodian'
+      fullPath: '/custodian'
+      preLoaderRoute: typeof CustodianRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/': {
@@ -184,6 +286,13 @@ declare module '@tanstack/react-router' {
       fullPath: '/farmer/'
       preLoaderRoute: typeof FarmerIndexRouteImport
       parentRoute: typeof FarmerRoute
+    }
+    '/custodian/': {
+      id: '/custodian/'
+      path: '/'
+      fullPath: '/custodian/'
+      preLoaderRoute: typeof CustodianIndexRouteImport
+      parentRoute: typeof CustodianRoute
     }
     '/farmer/transfer': {
       id: '/farmer/transfer'
@@ -227,6 +336,48 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof FarmerCertificatesRouteImport
       parentRoute: typeof FarmerRoute
     }
+    '/custodian/sync': {
+      id: '/custodian/sync'
+      path: '/sync'
+      fullPath: '/custodian/sync'
+      preLoaderRoute: typeof CustodianSyncRouteImport
+      parentRoute: typeof CustodianRoute
+    }
+    '/custodian/profile': {
+      id: '/custodian/profile'
+      path: '/profile'
+      fullPath: '/custodian/profile'
+      preLoaderRoute: typeof CustodianProfileRouteImport
+      parentRoute: typeof CustodianRoute
+    }
+    '/custodian/new': {
+      id: '/custodian/new'
+      path: '/new'
+      fullPath: '/custodian/new'
+      preLoaderRoute: typeof CustodianNewRouteImport
+      parentRoute: typeof CustodianRoute
+    }
+    '/custodian/login': {
+      id: '/custodian/login'
+      path: '/login'
+      fullPath: '/custodian/login'
+      preLoaderRoute: typeof CustodianLoginRouteImport
+      parentRoute: typeof CustodianRoute
+    }
+    '/custodian/inventory': {
+      id: '/custodian/inventory'
+      path: '/inventory'
+      fullPath: '/custodian/inventory'
+      preLoaderRoute: typeof CustodianInventoryRouteImport
+      parentRoute: typeof CustodianRoute
+    }
+    '/custodian/exit': {
+      id: '/custodian/exit'
+      path: '/exit'
+      fullPath: '/custodian/exit'
+      preLoaderRoute: typeof CustodianExitRouteImport
+      parentRoute: typeof CustodianRoute
+    }
     '/farmer/records/$id': {
       id: '/farmer/records/$id'
       path: '/$id'
@@ -243,6 +394,30 @@ declare module '@tanstack/react-router' {
     }
   }
 }
+
+interface CustodianRouteChildren {
+  CustodianExitRoute: typeof CustodianExitRoute
+  CustodianInventoryRoute: typeof CustodianInventoryRoute
+  CustodianLoginRoute: typeof CustodianLoginRoute
+  CustodianNewRoute: typeof CustodianNewRoute
+  CustodianProfileRoute: typeof CustodianProfileRoute
+  CustodianSyncRoute: typeof CustodianSyncRoute
+  CustodianIndexRoute: typeof CustodianIndexRoute
+}
+
+const CustodianRouteChildren: CustodianRouteChildren = {
+  CustodianExitRoute: CustodianExitRoute,
+  CustodianInventoryRoute: CustodianInventoryRoute,
+  CustodianLoginRoute: CustodianLoginRoute,
+  CustodianNewRoute: CustodianNewRoute,
+  CustodianProfileRoute: CustodianProfileRoute,
+  CustodianSyncRoute: CustodianSyncRoute,
+  CustodianIndexRoute: CustodianIndexRoute,
+}
+
+const CustodianRouteWithChildren = CustodianRoute._addFileChildren(
+  CustodianRouteChildren,
+)
 
 interface FarmerCertificatesRouteChildren {
   FarmerCertificatesIdRoute: typeof FarmerCertificatesIdRoute
@@ -292,6 +467,7 @@ const FarmerRouteWithChildren =
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  CustodianRoute: CustodianRouteWithChildren,
   FarmerRoute: FarmerRouteWithChildren,
 }
 export const routeTree = rootRouteImport
