@@ -7,7 +7,7 @@ export const Route = createFileRoute("/farmer")({
 
 function FarmerLayout() {
   const pathname = useRouterState({ select: (s) => s.location.pathname });
-  const hideTabs = pathname === "/farmer/login";
+  const hideTabs = pathname === "/farmer/login" || pathname === "/farmer" || pathname === "/farmer/";
   return (
     <div className="min-h-screen bg-grain-pale">
       <Outlet />
