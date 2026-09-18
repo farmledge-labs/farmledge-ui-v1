@@ -178,24 +178,18 @@
 
 /* Reference layout, scoped to the farmer home screen. */
 .farmer-home {
-  --home-background: oklch(0.96 0.055 90);
-  --home-surface: oklch(0.995 0 0);
-  background: var(--home-background);
+  background: var(--grain-pale);
   min-height: 100dvh;
 }
-.farmer-home .grain-bg { background: var(--home-background); }
-.farmer-home .grain-bg::before { display: none; }
-.farmer-home main { padding: 40px 24px 20px; }
 .farmer-home-header { display:flex; align-items:center; justify-content:space-between; margin-bottom:32px; }
 .farmer-home-person { display:flex; align-items:center; gap:6px; }
 .farmer-home-balance { background:var(--forest-dark); color:var(--primary-foreground); border-radius:34px; padding:36px 36px 22px; }
 .farmer-home-total { font-size:36px; line-height:1.2; font-weight:700; white-space:nowrap; }
 .farmer-home-actions { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:34px 24px; margin:30px 12px 44px; }
-.farmer-home-action { background:var(--home-surface); border-radius:22px; min-height:76px; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:2px; }
+.farmer-home-action { background:var(--card); border-radius:22px; min-height:76px; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:2px; }
 .farmer-home-action:hover { background:var(--grain-warm); }
 .farmer-home-section { margin-left:10px; margin-right:10px; }
-.farmer-home-deposit, .farmer-home-activity { background:var(--home-surface); border-radius:22px; }
-.farmer-home-deposit .font-display { font-family:var(--font-sans); }
+.farmer-home-deposit, .farmer-home-activity { background:var(--card); border-radius:22px; }
 @media(max-width:380px) {
  .farmer-home main { padding-left:16px; padding-right:16px; }
  .farmer-home-balance { padding:28px 24px 20px; }
